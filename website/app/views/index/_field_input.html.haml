@@ -1,0 +1,11 @@
+%div
+  = key
+  - if value.getOperator == "EQ"
+    %input{:type=>value.getType, :name=>key, :class=>key, :value=>params[key]}
+  - else
+    - lower_name = key + '_lower' 
+    - upper_name = key + '_upper'
+    %label between
+    %input{:type=>value.getType, :name=>lower_name, :class=>key, :value=>params[lower_name]}
+    %label and
+    %input{:type=>value.getType, :name=>upper_name, :class=>key, :value=>params[upper_name]}

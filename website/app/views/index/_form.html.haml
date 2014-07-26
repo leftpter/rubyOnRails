@@ -1,0 +1,31 @@
+%form
+  - message_type, index_name = IndexHelper.getMessageTypeIndexName(params, @description)
+  #MessageType{:class=>'message_type'}
+    %p
+      Message type:
+      %select{:name=>'message_type'}
+        - @description.getMessages.each do |key, value|
+          %option{:value=>key} #{key}
+  %hr
+  #IndexName{:class=>'index_name'}
+    %p
+      index name:
+      %select{:name=>'index_name'}
+        - @description.getMessages['po'].getIndex.each do |key, value|
+          %option{:value=>key} #{key}
+  %hr
+  #Necessary{:class=>'necessary'}
+    %p Necessary fields
+    - @description.getMessages['po'].getIndex['FNSku'].getFields.each do |key, value|
+      - if value.isRequired
+        =render 'field_input', :key=>key, :value=>value
+  %hr
+  #Optional{:class=>'optional'}
+    %p Optional fields
+    - @description.getMessages['po'].getIndex['FNSku'].getFields.each do |key, value|
+      - if !value.isRequired
+        =render 'field_input', :key=>key, :value=>value
+  %hr
+  .form-actions
+    %button.btn.btn-primary{type: 'submit'} Search
+  %hr

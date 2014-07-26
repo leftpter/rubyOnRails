@@ -1,5 +1,5 @@
 class IndexController < ApplicationController
   def index
-    @description = MessageDescription.new
+    @description = MessagesDescription.new
   end
 end

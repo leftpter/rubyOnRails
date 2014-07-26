@@ -1,12 +1,13 @@
 class MessageDescription
   def initialize
-    @fields = Hash.new
-    @fields['FNKsu'] = FieldDescription.new('STRING', 'EQ', true)
-    @fields['ENQUEUE_DATE'] = FieldDescription.new('DATE', 'BTW', false)
-    @fields['Qutity'] = FieldDescription.new('NUMBER', 'EQ', false)
+    @index = Hash.new    
   end
   
-  def fields
-    @fields
+  def add(name, index)
+    @index[name] = index
+  end
+  
+  def getIndex
+    @index
   end
 end
