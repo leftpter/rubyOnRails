@@ -1,11 +1,15 @@
+- # For field input
 %div
   = key
+  - # EQ: only one input
   - if value.getOperator == "EQ"
-    %input{:type=>value.getType, :name=>key, :class=>key, :value=>params[key]}
-  - else
+    - # Type is only STRING, DATE, NUMBER, so set it directly.
+    %input{:type=>value.getType, :name=>key, :value=>params[key]}
+    - # BTW: between lower and upper
+  - elsif value.getOperator == "BTW"
     - lower_name = key + '_lower' 
     - upper_name = key + '_upper'
     %label between
-    %input{:type=>value.getType, :name=>lower_name, :class=>key, :value=>params[lower_name]}
+    %input{:type=>value.getType, :name=>lower_name, :value=>params[lower_name]}
     %label and
-    %input{:type=>value.getType, :name=>upper_name, :class=>key, :value=>params[upper_name]}
+    %input{:type=>value.getType, :name=>upper_name, :value=>params[upper_name]}

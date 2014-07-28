@@ -1,0 +1,10 @@
+%table
+  %tr
+    - names.each do |name|
+      %th #{name}
+  
+  - results.each do |result|
+    %tr
+      - names.each do |name|
+        %td #{result.getFields[name]}
+    

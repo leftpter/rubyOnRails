@@ -1,0 +1,7 @@
+- # Make it simple, refresh whole page when user change the selection.
+%select{:name=>name, :onchange => "this.form.submit();"}
+  - values.each do |name|
+    - if selected == name
+      %option{:value=>name, :selected=>'selected'} #{name}
+    - else
+      %option{:value=>name} #{name}
